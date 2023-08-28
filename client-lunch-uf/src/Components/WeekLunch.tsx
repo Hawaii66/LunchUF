@@ -93,11 +93,10 @@ function WeekLunch({ lunch, onClick }: Props) {
               flex: 1,
             }}
           >
-            {"day" in lunch && (
-              <Text style={{ fontWeight: "800", fontSize: 24, color: "black" }}>
-                {ToDayString(lunch.day)}: {lunch.name}
-              </Text>
-            )}
+            <Text style={{ fontWeight: "600", fontSize: 20, color: "black" }}>
+              {"day" in lunch && `${ToDayString(lunch.day)}: `}
+              {lunch.name}
+            </Text>
             <Text>{lunch.description}</Text>
           </View>
         </Animated.View>

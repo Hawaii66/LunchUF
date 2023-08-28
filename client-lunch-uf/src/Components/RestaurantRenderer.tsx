@@ -28,7 +28,6 @@ function RestaurantRenderer({ onBack, restaurant }: Props) {
         contentContainerStyle={{
           justifyContent: "flex-start",
           alignItems: "center",
-          height: "100%",
         }}
       >
         <TouchableOpacity
@@ -68,6 +67,8 @@ function RestaurantRenderer({ onBack, restaurant }: Props) {
           dishes={restaurant.week.lunches.sort(SortLunch)}
           onClick={(d) => setSelectedLunch(d)}
         />
+
+        <View style={{ height: 40 }} />
         <DishList
           name="Alltid tillgängliga"
           dishes={restaurant.allways}
