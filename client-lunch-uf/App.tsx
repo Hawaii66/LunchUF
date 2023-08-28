@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from "react-native";
+import Home from "./src/Pages/Home";
+import { useState } from "react";
+import { Restaurant } from "./src/Interfaces/Resturant";
+import RestaurantRenderer from "./src/Components/RestaurantRenderer";
 
 export default function App() {
+  const [currentRestaurant, setCurrentRestaurant] = useState<Restaurant | null>(
+    null
+  );
+
+  if (currentRestaurant) {
+    return (
+      <SafeAreaView>
+        <RestaurantRenderer
+          onBack={() => setCurrentRestaurant(null)}
+          restaurant={currentRestaurant}
+        />
+      </SafeAreaView>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <Home
+        onClickRestaurant={(e) => {
+          setCurrentRestaurant(e);
+        }}
+      />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
