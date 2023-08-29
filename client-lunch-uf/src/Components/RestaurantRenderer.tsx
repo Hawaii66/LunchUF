@@ -5,6 +5,7 @@ import WeekLunch from "./WeekLunch";
 import { SortLunch } from "../Utils/DayString";
 import LunchCard from "./LunchCard";
 import DishList from "./DishList";
+import BackIcon from "./BackIcon";
 
 interface Props {
   restaurant: Restaurant;
@@ -34,9 +35,7 @@ function RestaurantRenderer({ onBack, restaurant }: Props) {
           onPress={onBack}
           style={{ zIndex: 100, position: "absolute", top: 4, left: 16 }}
         >
-          <Text style={{ fontSize: 36, fontWeight: "800", color: "black" }}>
-            {"<"}
-          </Text>
+          <BackIcon />
         </TouchableOpacity>
         <Text
           style={{

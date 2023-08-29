@@ -21,12 +21,10 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView>
-      <Home
-        onClickRestaurant={(e) => {
-          setCurrentRestaurant(e);
-        }}
-      />
-    </SafeAreaView>
+    <Home
+      onClickRestaurant={(e) => {
+        setCurrentRestaurant(e);
+      }}
+    />
   );
 }

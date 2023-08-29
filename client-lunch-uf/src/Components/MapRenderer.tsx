@@ -1,8 +1,15 @@
 import React from "react";
-import { Dimensions, TouchableOpacity, View, Text } from "react-native";
+import {
+  Dimensions,
+  TouchableOpacity,
+  View,
+  Text,
+  SafeAreaView,
+} from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { DummyRestaurans } from "../Utils/DummyData";
 import { Restaurant } from "../Interfaces/Resturant";
+import BackIcon from "./BackIcon";
 
 interface Props {
   onSelect: (restaurant: Restaurant) => void;
@@ -18,14 +25,16 @@ function MapRenderer({ onSelect, onBack }: Props) {
         position: "relative",
       }}
     >
-      <TouchableOpacity
-        onPress={onBack}
-        style={{ zIndex: 100, position: "absolute", top: 4, left: 16 }}
+      <SafeAreaView
+        style={{ position: "absolute", top: 0, left: 0, zIndex: 100 }}
       >
-        <Text style={{ fontSize: 36, fontWeight: "800", color: "black" }}>
-          {"<"}
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={onBack}
+          style={{ zIndex: 100, marginLeft: 16 }}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+      </SafeAreaView>
       <MapView
         initialRegion={{
           latitude: 58.755883967768334,
