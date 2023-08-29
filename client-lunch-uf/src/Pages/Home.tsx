@@ -1,14 +1,32 @@
-import React from "react";
-import { Dimensions, View, Text, ScrollView } from "react-native";
+import React, { useState } from "react";
+import {
+  Dimensions,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { DummyRestaurans } from "../Utils/DummyData";
 import RestaurantCard from "../Components/RestaurantCard";
 import { Restaurant } from "../Interfaces/Resturant";
+import MapRenderer from "../Components/MapRenderer";
 
 interface Props {
   onClickRestaurant: (restaurant: Restaurant) => void;
 }
 
 function Home({ onClickRestaurant }: Props) {
+  const [showMap, setShowMap] = useState(false);
+
+  if (showMap) {
+    return (
+      <MapRenderer
+        onBack={() => setShowMap(false)}
+        onSelect={onClickRestaurant}
+      />
+    );
+  }
+
   return (
     <View
       style={{
@@ -48,6 +66,9 @@ function Home({ onClickRestaurant }: Props) {
           paddingVertical: 8,
         }}
       >
+        <TouchableOpacity onPress={() => setShowMap(true)}>
+          <Text>Karta</Text>
+        </TouchableOpacity>
         {DummyRestaurans.map((restaurant) => (
           <RestaurantCard
             onClick={() => onClickRestaurant(restaurant)}
